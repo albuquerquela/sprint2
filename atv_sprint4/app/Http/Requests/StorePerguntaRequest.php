@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Http\Requests;
+
+class StorePerguntaRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'texto' => 'required|string|min:10|max:255',
+            'evento_id' => 'required|exists:eventos,id',
+        ];
+    }
+}
